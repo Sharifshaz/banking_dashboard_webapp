@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode Palette */
+    --background: 210 20% 97%; /* #F5F7FA */
+    --foreground: 220 13% 18%; /* #111827 */
+    
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    --primary: 243 75% 59%; /* #4F46E5 */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 199 89% 48%; /* #0EA5E9 */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 14% 96%; /* #F3F4F6 */
+    --muted-foreground: 215 16% 47%; /* #6B7280 */
+
+    --accent: 226 100% 97%; /* #EEF2FF */
+    --accent-foreground: 243 75% 59%;
+
+    --destructive: 0 84% 60%; /* #EF4444 */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 91%; /* #E4E7EC */
+    --input: 220 13% 91%;
+    --ring: 243 75% 59%;
+
+    --radius: 0.75rem; 
+    
+    --success: 158 64% 52%; /* #10B981 */
+    --warning: 45 93% 47%; /* #F59E0B */
+    --danger: 0 84% 60%; /* #EF4444 */
+  }
+
+  .dark {
+    --background: 225 21% 7%; /* #0F1117 */
+    --foreground: 210 40% 98%; /* #F9FAFB */
+
+    --card: 226 20% 13%; /* #1A1D27 */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 226 20% 13%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 239 84% 67%; /* #6366F1 */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 189 94% 43%; /* #22D3EE */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 217 19% 27%; /* #374151 */
+    --muted-foreground: 215 20% 65%; /* #9CA3AF */
+
+    --accent: 226 27% 16%; /* #1E2235 */
+    --accent-foreground: 239 84% 67%;
+
+    --destructive: 0 91% 71%; /* #F87171 */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 231 23% 23%; /* #2D3148 */
+    --input: 231 23% 23%;
+    --ring: 239 84% 67%;
+    
+    --success: 158 64% 52%; /* #34D399 */
+    --warning: 48 96% 53%; /* #FCD34D */
+    --danger: 0 91% 71%; /* #F87171 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Animations */
+@keyframes gradient-xy {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-gradient-xy {
+  animation: gradient-xy 8s ease-in-out infinite;
+  background-size: 300% 300%;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1.2s ease-out forwards;
+}
+
+.delay-300 { animation-delay: 300ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-900 { animation-delay: 900ms; }
+
+/* Hide scrollbar for horizontal scroll areas */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Login Page Specific Animations */
+.animated-panel-bg {
+  background: linear-gradient(-45deg, #3A3ABF, #6C47FF, #A855F7, #7C3AED);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatCard {
+  0%   { transform: rotate(-6deg) translateY(0px); }
+  100% { transform: rotate(-6deg) translateY(-16px); }
+}
+
+.animate-float-card-custom {
+  animation: floatCard 4s ease-in-out infinite alternate;
+}
